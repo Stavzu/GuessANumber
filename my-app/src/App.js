@@ -7,13 +7,22 @@ import "./App.css";
 function App() {
   const [guessNumber, seGuessNumber] = useState();
 
+  const startNumber = 0;
+  const endNumber = 100;
+
+  const getRandomNumber = (min, max) => {
+    return min + Math.floor(Math.random() * (max - min + 1));
+  };
+
+  const randomNumber = useMemo(() => getRandomNumber(0, 100), []);
+
   const handleChange = (e) => {
+    const newGuessNumber = e.target.value;
+    seGuessNumber(newGuessNumber);
     e.preventDefault();
-    seGuessNumber(e.target.value);
   };
 
   const handleSubmit = (e) => {
-    alert("My guess number is: " + guessNumber);
     e.preventDefault();
     seGuessNumber("");
   };
@@ -21,7 +30,7 @@ function App() {
   return (
     <div className="App">
       <div className="alert">
-        <p id="guessMessage">Welcome!</p>
+        <p id="guessMessage">Welcome</p>
       </div>
 
       <header>
@@ -30,7 +39,11 @@ function App() {
 
       <div className="main">
         <HowToPlaySection />
-        <SecretNumberSection />
+        <SecretNumberSection
+          startNumber={startNumber}
+          endNumber={endNumber}
+          randomNumber={randomNumber}
+        />
       </div>
 
       <div className="guessPanel">

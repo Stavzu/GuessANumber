@@ -1,16 +1,8 @@
-import React, { useMemo } from "react";
+import React from "react";
 import "../App.css";
 import hvezda from "../hvezda.svg";
 
-const SecretNumberSection = () => {
-  const startNumber = 0;
-  const endNumber = 100;
-
-  const getRandomNumber = (min, max) => {
-    return min + Math.floor(Math.random() * (max - min + 1));
-  };
-
-  const randomNumber = useMemo(() => getRandomNumber(0, 100), []);
+const SecretNumberSection = ({ startNumber, randomNumber, endNumber }) => {
   return (
     <div className="mainSection">
       <h2>Secret Number</h2>
