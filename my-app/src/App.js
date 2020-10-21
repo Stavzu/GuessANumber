@@ -10,6 +10,14 @@ const playSteps = [
 ];
 
 function App() {
+  const randomNumber = getRandomNumber(0, 100);
+  const startNumber = 0;
+  const endNumber = 100;
+
+  function getRandomNumber(min, max) {
+    return min + Math.floor(Math.random() * (max - min + 1));
+  }
+
   return (
     <div className="App">
       <div className="alert">
@@ -35,18 +43,18 @@ function App() {
           <h2>Secret Number</h2>
           <div className="secretNumber">
             <p className="symbol number rightAligned" id="minRange">
-              0
+              {startNumber}
             </p>
             <p className="symbol arrow">&lt;</p>
             <div className="star">
               <img src={hvezda} alt="hvezda" />
               <p className="symbol" id="mysteryNumber">
-                ?
+                {randomNumber}
               </p>
             </div>
             <p className="symbol arrow">&lt;</p>
             <p className="symbol number" id="maxRange">
-              100
+              {endNumber}
             </p>
           </div>
         </div>
