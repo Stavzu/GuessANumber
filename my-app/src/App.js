@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useMemo } from "react";
 import Button from "./components/Button";
 import hvezda from "./hvezda.svg";
 import "./App.css";
@@ -10,13 +10,27 @@ const playSteps = [
 ];
 
 function App() {
-  const randomNumber = getRandomNumber(0, 100);
+  const [guessNumber, seGuessNumber] = useState();
+
   const startNumber = 0;
   const endNumber = 100;
 
-  function getRandomNumber(min, max) {
+  const getRandomNumber = (min, max) => {
     return min + Math.floor(Math.random() * (max - min + 1));
-  }
+  };
+
+  const randomNumber = useMemo(() => getRandomNumber(0, 100), []);
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    seGuessNumber(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    alert("My guess number is: " + guessNumber);
+    console.log(guessNumber, "guessNumber");
+    e.preventDefault();
+  };
 
   return (
     <div className="App">
@@ -61,9 +75,16 @@ function App() {
       </div>
 
       <div className="guessPanel">
-        <form className="guessForm">
+        <form className="guessForm" onSubmit={handleSubmit}>
           <h2>Number between 0 and 100:</h2>
-          <input type="number" min="0" max="100" id="guessInput" />
+          <input
+            id="guessInput"
+            type="number"
+            value={guessNumber}
+            onChange={handleChange}
+            min="0"
+            max="100"
+          />
           <Button label="guess" type="submit" id="guessButton" />
         </form>
         <div className="restartGame">
