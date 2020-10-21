@@ -1,13 +1,8 @@
 import React, { useState, useMemo } from "react";
 import Button from "./components/Button";
 import SecretNumberSection from "./containers/SecretNumberSection";
+import HowToPlaySection from "./containers/HowToPlaySection";
 import "./App.css";
-
-const playSteps = [
-  { id: 1, step: "Guess the secret number between 0 and 100." },
-  { id: 2, step: "If you guess incorrect number, you will get a hint." },
-  { id: 3, step: "If you guess correct number, you win!" },
-];
 
 function App() {
   const [guessNumber, seGuessNumber] = useState();
@@ -34,16 +29,7 @@ function App() {
       </header>
 
       <div className="main">
-        <div className="mainSection">
-          <h2>How to play</h2>
-
-          <ul>
-            {playSteps?.map((i) => {
-              return <li key={i.id}>{i.step}</li>;
-            })}
-          </ul>
-        </div>
-
+        <HowToPlaySection />
         <SecretNumberSection />
       </div>
 
