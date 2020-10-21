@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "./components/Button";
 import hvezda from "./hvezda.svg";
 import "./App.css";
 
@@ -49,12 +50,10 @@ function App() {
         <form className="guessForm">
           <h2>Number between 0 and 100:</h2>
           <input type="number" min="0" max="100" id="guessInput" />
-          <button type="submit" id="guessButton">
-            guess
-          </button>
+          <Button label="guess" type="submit" id="guessButton" />
         </form>
         <div className="restartGame">
-          <button id="restartGameButton">Restart game</button>
+          <Button label="Restart game" id="restartGameButton" />
         </div>
       </div>
     </div>
