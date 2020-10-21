@@ -28,8 +28,8 @@ function App() {
 
   const handleSubmit = (e) => {
     alert("My guess number is: " + guessNumber);
-    console.log(guessNumber, "guessNumber");
     e.preventDefault();
+    seGuessNumber("");
   };
 
   return (
