@@ -3,6 +3,12 @@ import Button from "./components/Button";
 import hvezda from "./hvezda.svg";
 import "./App.css";
 
+const playSteps = [
+  { id: 1, step: "Guess the secret number between 0 and 100." },
+  { id: 2, step: "If you guess incorrect number, you will get a hint." },
+  { id: 3, step: "If you guess correct number, you win!" },
+];
+
 function App() {
   return (
     <div className="App">
@@ -19,9 +25,9 @@ function App() {
           <h2>How to play</h2>
 
           <ul>
-            <li>Guess the secret number between 0 and 100.</li>
-            <li>If you guess incorrect number, you will get a hint.</li>
-            <li>If you guess correct number, you win!</li>
+            {playSteps?.map((i) => {
+              return <li key={i.id}>{i.step}</li>;
+            })}
           </ul>
         </div>
 
