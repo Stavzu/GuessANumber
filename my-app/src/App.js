@@ -1,24 +1,62 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import hvezda from "./hvezda.svg";
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <div className="alert">
+        <p id="guessMessage">Welcome!</p>
+      </div>
+
+      <header>
+        <h1 id="headline">Can you guess the secret number?</h1>
       </header>
+
+      <div className="main">
+        <div className="mainSection">
+          <h2>How to play</h2>
+
+          <ul>
+            <li>Guess the secret number between 0 and 100.</li>
+            <li>If you guess incorrect number, you will get a hint.</li>
+            <li>If you guess correct number, you win!</li>
+          </ul>
+        </div>
+
+        <div className="mainSection">
+          <h2>Secret Number</h2>
+          <div className="secretNumber">
+            <p className="symbol number rightAligned" id="minRange">
+              0
+            </p>
+            <p className="symbol arrow">&lt;</p>
+            <div className="star">
+              <img src={hvezda} alt="hvezda" />
+              <p className="symbol" id="mysteryNumber">
+                ?
+              </p>
+            </div>
+            <p className="symbol arrow">&lt;</p>
+            <p className="symbol number" id="maxRange">
+              100
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="guessPanel">
+        <form className="guessForm">
+          <h2>Number between 0 and 100:</h2>
+          <input type="number" min="0" max="100" id="guessInput" />
+          <button type="submit" id="guessButton">
+            guess
+          </button>
+        </form>
+        <div className="restartGame">
+          <button id="restartGameButton">Restart game</button>
+        </div>
+      </div>
     </div>
   );
 }
